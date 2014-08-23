@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1" package="com.buildstuff14" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="15" />
-	<application android:theme="@android:style/Theme.Holo.Light" android:label="BuildStuff2014" android:icon="@drawable/buildstuff14"></application>
-</manifest>
