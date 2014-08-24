@@ -41,6 +41,8 @@
     <Compile Include="Fonts.cs" />
     <Compile Include="Model\Speaker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\SessionDetail.cs" />
+    <Compile Include="Views\SessionDetailPage.cs" />
     <Compile Include="Views\SpeakerCell.cs" />
     <Compile Include="Views\SpeakerDetailPage.cs" />
     <Compile Include="Views\SpeakerListPage.cs" />
@@ -55,6 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.1.1.0.6201\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.1.0.6201\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
