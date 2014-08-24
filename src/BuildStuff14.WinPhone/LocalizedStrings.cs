@@ -1,6 +1,7 @@
-﻿using XamarinFormsXamlSample.WinPhone.Resources;
+﻿using BuildStuff14.WinPhone.Resources;
 
-namespace XamarinFormsXamlSample.WinPhone
+
+namespace BuildStuff14.WinPhone
 {
     /// <summary>
     /// Provides access to string resources.

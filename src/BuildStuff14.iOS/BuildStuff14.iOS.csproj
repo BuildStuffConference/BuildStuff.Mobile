@@ -8,9 +8,9 @@
     <ProjectGuid>{8E155661-F41D-4AFF-9DD7-65453C734396}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>XamarinFormsXamlSample.iOS</RootNamespace>
+    <RootNamespace>BuildStuff14.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>FormsTemplateiOS</AssemblyName>
+    <AssemblyName>BuildStuff14.iOS</AssemblyName>
     <NuGetPackageImportStamp>b9a3241b</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -75,6 +75,9 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <CodesignKey>iPhone Distribution</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>BuildStuff14.iOS.Application</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />

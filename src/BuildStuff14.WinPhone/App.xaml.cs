@@ -6,9 +6,10 @@ using System.Windows.Markup;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using XamarinFormsXamlSample.WinPhone.Resources;
+using BuildStuff14.WinPhone.Resources;
 
-namespace XamarinFormsXamlSample.WinPhone
+
+namespace BuildStuff14.WinPhone
 {
     public partial class App : Application
     {

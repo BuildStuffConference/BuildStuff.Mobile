@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XamarinFormsXamlSample.WinPhone</RootNamespace>
-    <AssemblyName>XamarinFormsXamlSample.WinPhone</AssemblyName>
+    <RootNamespace>BuildStuff14.WinPhone</RootNamespace>
+    <AssemblyName>BuildStuff14.WinPhone</AssemblyName>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
@@ -19,13 +19,15 @@
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <XapFilename>PhoneApp1_$(Configuration)_$(Platform).xap</XapFilename>
+    <XapFilename>BuildStuff_Debug_ARM.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>XamarinFormsXamlSample.WinPhone.App</SilverlightAppEntry>
+    <SilverlightAppEntry>BuildStuff14.WinPhone.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
     <NuGetPackageImportStamp>8f276cd9</NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -122,22 +124,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\XamarinFormsXamlSample.iOS\Resources\CecilKinross.png">
-      <Link>Images\CecilKinross.png</Link>
-    </Content>
-    <Content Include="..\XamarinFormsXamlSample.iOS\Resources\ErnestSmith.png">
-      <Link>Images\ErnestSmith.png</Link>
-    </Content>
-    <Content Include="..\XamarinFormsXamlSample.iOS\Resources\PaulTriquet.png">
-      <Link>Images\PaulTriquet.png</Link>
-    </Content>
-    <Content Include="..\XamarinFormsXamlSample.iOS\Resources\RobertSpall.png">
-      <Link>Images\RobertSpall.png</Link>
-    </Content>
-    <Content Include="..\XamarinFormsXamlSample.iOS\Resources\WilliamHall.png">
-      <Link>Images\WilliamHall.png</Link>
-    </Content>
+  <ItemGroup>   
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -171,8 +158,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XamarinFormsXamlSample\XamarinFormsXamlSample.csproj">
-      <Name>XamarinFormsXamlSample</Name>
+    <ProjectReference Include="..\BuildStuff14\BuildStuff14.csproj">
+      <Project>{2a916bde-944e-444e-ad57-3caa7dcb9240}</Project>
+      <Name>BuildStuff14</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -205,5 +193,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.1.1.0.6201\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.1.1.0.6201\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

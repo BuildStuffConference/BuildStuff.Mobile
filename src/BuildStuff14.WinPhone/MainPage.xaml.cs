@@ -7,11 +7,10 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-
 using Xamarin.Forms;
 
 
-namespace XamarinFormsXamlSample.WinPhone
+namespace BuildStuff14.WinPhone
 {
     public partial class MainPage : PhoneApplicationPage
     {
@@ -20,7 +19,7 @@ namespace XamarinFormsXamlSample.WinPhone
             InitializeComponent();
 
             Forms.Init();
-            Content = XamarinFormsXamlSample.App.GetMainPage().ConvertPageToUIElement(this);
+            Content = BuildStuff14.App.GetMainPage().ConvertPageToUIElement(this);
         }
     }
 }
