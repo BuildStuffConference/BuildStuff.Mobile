@@ -9,79 +9,24 @@ namespace BuildStuff14.Views
     /// <summary>
     ///   A Xamarin.Forms page for displaying speaker details.
     /// </summary>
-    class SpeakerDetailPage : ContentPage
+    public class SpeakerDetailPage : ContentPage
     {
         readonly ICommand _deleteCommand;
         readonly Speaker _speaker;
 
         public SpeakerDetailPage(Speaker speaker)
         {
-            _speaker = speaker;
-
-            #region Initialize some properties on the Page
+            _speaker = speaker;            
             Padding = new Thickness(20);
             BindingContext = speaker;
-            #endregion
-
-            #region Initialize the command that will be execute when the user clicks on the delete button.
+            
             _deleteCommand =  new Command(() => {
                                              App.speakers.Remove(_speaker);
                                              Navigation.PopAsync();
                                          });
-            #endregion
-
-            #region Create the controls for the Page.
-            Image speakerImage = new Image
-                                  {
-                                      HeightRequest = 200,
-                                      Source = ImageSource.FromFile(_speaker.ImageUri),
-                                  };
-
-            // Put the two buttons inside a grid
-            Grid buttonsLayout = new Grid
-                                 {
-                                     ColumnDefinitions =
-                                     {
-                                         new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
-                                         new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) },
-                                     },
-                                     Children =
-                                     {
-                                         { CreateDeleteButton(), 0, 0 },
-                                         { CreateSaveButton(), 1, 0 }
-                                     }
-                                 };
-
-            // Create a grid to hold the Labels & Entry controls.
-            Grid inputGrid = new Grid
-                             {
-                                 ColumnDefinitions =
-                                 {
-                                     new ColumnDefinition { Width = GridLength.Auto },
-                                     new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
-                                 },
-                                 Children =
-                                 {
-                                     { new Label { Text = "First Name:", Font = Fonts.SmallTitle, TextColor = Colours.SubTitle }, 0, 0 },
-                                     { new Label { Text = "Last Name:", Font = Fonts.SmallTitle, TextColor = Colours.SubTitle }, 0, 1 },
-                                     { new Label { Text = "Twitter: ", XAlign = TextAlignment.End, Font = Fonts.SmallTitle, TextColor = Colours.SubTitle }, 0, 2 },
-                                     { CreateEntryFor("FirstName"), 1, 0 },
-                                     { CreateEntryFor("LastName"), 1, 1 },
-                                     { CreateEntryFor("Twitter"), 1, 2 }
-                                 }
-                             };
-            #endregion
 
             // Add the controls to a StackLayout 
-            Content = new StackLayout
-                      {
-                          Children =
-                          {
-                              speakerImage,
-                              inputGrid,
-                              buttonsLayout
-                          }
-                      };
+            Content = CreateSpeakerDetailPage();
         }
 
         /// <summary>
@@ -143,5 +88,58 @@ namespace BuildStuff14.Views
             input.SetBinding(Entry.TextProperty, propertyName);
             return input;
         }
+
+        private StackLayout CreateSpeakerDetailPage()
+        {
+            Image speakerImage = new Image
+            {
+                HeightRequest = 200,
+                Source = ImageSource.FromFile(_speaker.ImageUri),
+            };
+
+            // Put the two buttons inside a grid
+            Grid buttonsLayout = new Grid
+            {
+                ColumnDefinitions =
+                                     {
+                                         new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                                         new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) },
+                                     },
+                Children =
+                                     {
+                                         { CreateDeleteButton(), 0, 0 },
+                                         { CreateSaveButton(), 1, 0 }
+                                     }
+            };
+
+            // Create a grid to hold the Labels & Entry controls.
+            Grid inputGrid = new Grid
+            {
+                ColumnDefinitions =
+                                 {
+                                     new ColumnDefinition { Width = GridLength.Auto },
+                                     new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                                 },
+                Children =
+                                 {
+                                     { new Label { Text = "First Name:", Font = Fonts.SmallTitle, TextColor = Colours.SubTitle }, 0, 0 },
+                                     { new Label { Text = "Last Name:", Font = Fonts.SmallTitle, TextColor = Colours.SubTitle }, 0, 1 },
+                                     { new Label { Text = "Twitter: ", XAlign = TextAlignment.End, Font = Fonts.SmallTitle, TextColor = Colours.SubTitle }, 0, 2 },
+                                     { CreateEntryFor("FirstName"), 1, 0 },
+                                     { CreateEntryFor("LastName"), 1, 1 },
+                                     { CreateEntryFor("Twitter"), 1, 2 }
+                                 }
+            };
+
+            return new StackLayout
+            {
+                Children =
+                          {
+                              speakerImage,
+                              inputGrid,
+                              buttonsLayout
+                          }
+            };
+        } 
     }
 }
