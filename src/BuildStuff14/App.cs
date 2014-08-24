@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-
-using Xamarin.Forms;
-
-using BuildStuff14.Model;
-using BuildStuff14.Views;
-
-namespace BuildStuff14
+﻿namespace BuildStuff14
 {
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+
+    using BuildStuff14.Model;
+    using BuildStuff14.Views;
+
+    using Xamarin.Forms;
+
     public class App
     {
         static ObservableCollection<Speaker> _speakers;
@@ -28,33 +28,15 @@ namespace BuildStuff14
                     return _speakers;
                 }
                 List<Speaker> list = new List<Speaker>
-                                      {
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                          new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
-                                      };
+                {
+                    new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
+                    new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
+                    new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
+                    new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
+                    new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
+                    new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
+                    new Speaker { FirstName = "Greg", LastName = "Young", ImageUri = "greg" },
+                };
 
                 foreach (Speaker speaker in list)
                 {
@@ -71,7 +53,18 @@ namespace BuildStuff14
         /// <returns>The main page.</returns>
         public static Page GetMainPage()
         {
-            NavigationPage mainNav = new NavigationPage(new SpeakerListPage());
+
+            NavigationPage mainNav = new NavigationPage(new CarouselPage()
+            {
+                Children =
+                {
+                    new SpeakerListPage(),
+                    new SpeakerListPage(),
+                    new SpeakerListPage(),
+                }
+            });
+
+
             return mainNav;
         }
     }
