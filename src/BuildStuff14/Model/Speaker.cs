@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -9,10 +10,12 @@ namespace BuildStuff14.Model
     /// </summary>
     public class Speaker : INotifyPropertyChanged
     {
-        string _firstName;
-        string _imageUri;
-        string _lastName;
-        string _twitter;
+        private string _firstName;
+        private string _imageUri;
+        private string _lastName;
+        private string _twitter;
+        private string _bio;
+        private List<string> _sessions;
 
         public Speaker()
         {
@@ -78,6 +81,33 @@ namespace BuildStuff14.Model
                 OnPropertyChanged();
             }
         }
+
+        public string Bio
+        {
+            get
+            {
+                return _bio;
+            }
+            set
+            {
+                _bio = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public List<string> Sessions
+        {
+            get
+            {
+                return _sessions;
+            }
+            set
+            {
+                _sessions = value;
+                OnPropertyChanged();
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged; // Required by INotifyPropertyChanged
 
         /// <summary>
