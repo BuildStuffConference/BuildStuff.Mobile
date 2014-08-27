@@ -58,7 +58,7 @@
             {
                 Children =
                 {
-                    new SpeakerListPage(),
+                    new AgendaPage(),
                     new SpeakerListPage(),
                     new SpeakerListPage(),
                 }
