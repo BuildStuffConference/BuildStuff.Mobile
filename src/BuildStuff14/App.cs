@@ -6,12 +6,15 @@ using Xamarin.Forms;
 
 using BuildStuff14.Model;
 using BuildStuff14.Views;
+using Xamarin.Forms.Labs.Mvvm;
+using Xamarin.Forms.Labs.Services;
 
 namespace BuildStuff14
 {
     public class App
     {
         static ObservableCollection<Speaker> _speakers;
+        private static readonly ObservableCollection<SessionDetail> _mySessions = new ObservableCollection<SessionDetail>();
 
         public static bool IsLoggedIn { get; set; }
 
@@ -71,14 +74,19 @@ namespace BuildStuff14
         /// <returns>The main page.</returns>
         public static Page GetMainPage()
         {
-            //NavigationPage mainNav = new NavigationPage(
-            //    new SessionDetailPage(
-            //        new SessionDetail(
-            //            speakers.First(),
-            //            "Get Event Store",
-            //            "We're delighted to welcome Greg Young back to Buildstuff for the launch of the Event Store! Everything has been kept pretty quiet, until now! Join us over a beer to learn more.",
-            //            new System.DateTime(2014, 11, 19, 14, 0, 0))));
-            NavigationPage mainNav = new NavigationPage(new SpeakerListPage());
+            Resolver.SetResolver(new SimpleContainer().GetResolver());
+            var app = Resolver.Resolve<IXFormsApp>();
+
+            NavigationPage mainNav = new NavigationPage(
+                new SessionDetailPage(
+                    new SessionDetail(
+                        "123",
+                        "Get Event Store",
+                        "We're delighted to welcome Greg Young back to Buildstuff for the launch of the Event Store! Everything has been kept pretty quiet, until now! Join us over a beer to learn more.",
+                        new System.DateTime(2014, 11, 19, 14, 0, 0),
+                        speakers.First(),
+                        _mySessions)));
+            //NavigationPage mainNav = new NavigationPage(new SpeakerListPage());
             return mainNav;
         }
     }

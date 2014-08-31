@@ -1,18 +1,69 @@
-﻿using BuildStuff14.Model;
+﻿using System;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using BuildStuff14.Model;
 using Xamarin.Forms;
+using Xamarin.Forms.Labs.Controls;
+using Xamarin.Forms.Labs.Enums;
 
 namespace BuildStuff14.Views
 {
+    public interface IAsyncCommand<in TInput> : ICommand
+    {
+        Task ExecuteAsync(TInput parameter);
+    }
+
+    public class AsyncCommand<TInput> : IAsyncCommand<TInput>
+    {
+        private readonly Func<TInput, Task> excecute;
+        private readonly Func<TInput, bool> canExecute;
+
+        public AsyncCommand(Func<TInput, Task> excecute, Func<TInput, bool> canExecute = null)
+        {
+            if (excecute == null) throw new ArgumentNullException("excecute");
+            this.excecute = excecute;
+            this.canExecute = canExecute ?? (_ => true);
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return canExecute((TInput)parameter);
+        }
+
+        public async void Execute(object parameter)
+        {
+            await ExecuteAsync((TInput)parameter);
+        }
+
+        public event EventHandler CanExecuteChanged;
+
+        public Task ExecuteAsync(TInput parameter)
+        {
+            return excecute(parameter);
+        }
+    }
+
     public class SessionDetailPage : ContentPage
     {
+        private readonly IAsyncCommand<SessionDetail> _favoriteCommand;
+
         public SessionDetailPage(SessionDetail sessionDetail)
         {
-            #region Initialize some properties on the Page
-
             Padding = new Thickness(20);
             BindingContext = sessionDetail;
 
-            #endregion
+            _favoriteCommand = new AsyncCommand<SessionDetail>(s => s.ToggleAttending());
+            
+            var favorite = new ImageButton
+            {
+                ImageHeightRequest = 50,
+                ImageWidthRequest = 50,
+                Orientation = ImageOrientation.ImageToLeft,
+                BindingContext = this,
+                CommandParameter = sessionDetail
+            };
+            favorite.SetBinding(ImageButton.SourceProperty, "BindingContext.Favorited");
+            favorite.SetBinding(Button.CommandProperty, "FavoriteCommand");
 
             var speaker = new StackLayout
             {
@@ -57,9 +108,15 @@ namespace BuildStuff14.Views
                 Children =
                 {
                     headerLayout,
-                    details
+                    details,
+                    favorite
                 }
             };
+        }
+
+        public IAsyncCommand<SessionDetail> FavoriteCommand
+        {
+            get { return _favoriteCommand; }
         }
     }
 }
