@@ -77,6 +77,7 @@ namespace BuildStuff14
             Resolver.SetResolver(new SimpleContainer().GetResolver());
             var app = Resolver.Resolve<IXFormsApp>();
 
+<<<<<<< HEAD
             NavigationPage mainNav = new NavigationPage(
                 new SessionDetailPage(
                     new SessionDetail(
@@ -87,6 +88,19 @@ namespace BuildStuff14
                         speakers.First(),
                         _mySessions)));
             //NavigationPage mainNav = new NavigationPage(new SpeakerListPage());
+=======
+            NavigationPage mainNav = new NavigationPage(new CarouselPage()
+            {
+                Children =
+                {
+                    new AgendaPage(),
+                    new SpeakerListPage(),
+                    new SpeakerListPage(),
+                }
+            });
+
+
+>>>>>>> 72026d7c1e81a6cef255511e3b955da8b89f9a7a
             return mainNav;
         }
     }
