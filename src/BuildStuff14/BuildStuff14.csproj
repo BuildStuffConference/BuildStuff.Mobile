@@ -43,12 +43,9 @@
     <Compile Include="Model\Speaker.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
     <Compile Include="Model\SessionDetail.cs" />
     <Compile Include="Views\SessionDetailPage.cs" />
-=======
     <Compile Include="Views\AgendaPage.cs" />
->>>>>>> 72026d7c1e81a6cef255511e3b955da8b89f9a7a
     <Compile Include="Views\SpeakerCell.cs" />
     <Compile Include="Views\SpeakerDetailPage.cs" />
     <Compile Include="Views\SpeakerListPage.cs" />
