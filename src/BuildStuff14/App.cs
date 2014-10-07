@@ -93,7 +93,9 @@ namespace BuildStuff14
             {
                 Children =
                 {
-                    new AgendaPage(),
+                    new AgendaPage("http://buildstuff14.sched.org/?iframe=no&w=i:0;&sidebar=yes&bg=no"),
+                    new AgendaPage("http://buildstuff14.sched.org/?iframe=no&w=i:0;&sidebar=yes&bg=no"),
+                    new AgendaPage("http://buildstuff14.sched.org/?iframe=no&w=i:0;&sidebar=yes&bg=no"),
                     new SpeakerListPage(),
                     new SpeakerListPage(),
                 }
