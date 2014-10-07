@@ -10,14 +10,14 @@ namespace BuildStuff14.Views
 
     class AgendaPage : ContentPage
     {
-        public AgendaPage()
+        public AgendaPage(string url)
         {
 
             WebView webView = new WebView
             {
                 Source = new UrlWebViewSource
                 {
-                    Url = "http://buildstuff2013.sched.org/?iframe=no&w=i:0;&sidebar=yes&bg=no",
+                    Url = url,
                 },
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
